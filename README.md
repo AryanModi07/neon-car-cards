@@ -16,7 +16,7 @@ A modern, responsive 3D neon car card UI built using **HTML, CSS, and JavaScript
 - JavaScript (Vanilla)
 
 ## 🌐 Live Demo
-👉 https://yourusername.github.io/neon-car-cards/
+👉 https://aryanmodi07.github.io/neon-car-cards/
 
 ## 📸 Preview
 ![Preview](images/preview.png)
