@@ -1,0 +1,232 @@
+/* =========================
+   PARTICLE BACKGROUND
+========================= */
+#particles {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* =========================
+   RESET & BASE
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #050505, #000);
+    color: #fff;
+    padding: 40px 20px;
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+.page-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* Neon animated title */
+.title {
+    font-size: 2.6rem;
+    letter-spacing: 4px;
+    animation: neonColorCycle 25s infinite;
+}
+
+.subtitle {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    color: #aaa;
+    opacity: 0.9;
+}
+
+/* Neon color cycle */
+@keyframes neonColorCycle {
+    0% {
+        color: #00ffff;
+        text-shadow: 0 0 10px #00ffff, 0 0 40px rgba(0,255,255,0.7);
+    }
+    20% {
+        color: #ff003c;
+        text-shadow: 0 0 10px #ff003c, 0 0 40px rgba(255,0,60,0.7);
+    }
+    40% {
+        color: #b300ff;
+        text-shadow: 0 0 10px #b300ff, 0 0 40px rgba(179,0,255,0.7);
+    }
+    60% {
+        color: #00ff6a;
+        text-shadow: 0 0 10px #00ff6a, 0 0 40px rgba(0,255,106,0.7);
+    }
+    80% {
+        color: #ffe600;
+        text-shadow: 0 0 10px #ffe600, 0 0 40px rgba(255,230,0,0.7);
+    }
+    100% {
+        color: #00ffff;
+        text-shadow: 0 0 10px #00ffff, 0 0 40px rgba(0,255,255,0.7);
+    }
+}
+
+/* =========================
+   GRID
+========================= */
+.card-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+/* =========================
+   CARD
+========================= */
+.neon-card {
+    perspective: 1200px;
+}
+
+.card-inner {
+    --neon: #00ffff;
+
+    position: relative;
+    height: 380px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #000;
+    cursor: pointer;
+
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease;
+    will-change: transform;
+
+    box-shadow:
+        0 0 20px var(--neon),
+        0 0 60px color-mix(in srgb, var(--neon), transparent 70%);
+}
+
+/* Neon border */
+.card-inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 2px solid var(--neon);
+    filter: drop-shadow(0 0 15px var(--neon));
+    pointer-events: none;
+}
+
+/* Image */
+.card-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    transition: transform 0.4s ease;
+}
+
+/* =========================
+   CARD CONTENT
+========================= */
+.card-content {
+    position: absolute;
+    inset: 0;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 8px;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), transparent 60%);
+}
+
+.card-content h2 {
+    font-size: 1.3rem;
+    color: var(--neon);
+    text-shadow: 0 0 10px var(--neon);
+    transition: transform 0.3s ease;
+}
+
+.tagline {
+    font-size: 0.9rem;
+    color: #ccc;
+    letter-spacing: 0.5px;
+    transition: transform 0.3s ease;
+}
+
+/* CTA BUTTON */
+.cta {
+    margin-top: 10px;
+    align-self: flex-start;
+    padding: 8px 22px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: var(--neon);
+    background: transparent;
+    border: 1px solid var(--neon);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta:hover {
+    background: var(--neon);
+    color: #000;
+    box-shadow: 0 0 20px var(--neon);
+}
+
+/* =========================
+   MICRO INTERACTIONS
+========================= */
+.neon-card:hover img {
+    transform: scale(1.06);
+}
+
+.neon-card:hover .card-content h2,
+.neon-card:hover .tagline {
+    transform: translateY(-6px);
+}
+
+.neon-card:hover .card-inner {
+    box-shadow:
+        0 0 35px var(--neon),
+        0 0 100px color-mix(in srgb, var(--neon), transparent 50%);
+}
+
+/* =========================
+   NEON COLOR VARIANTS
+========================= */
+.cyan   .card-inner { --neon: #00ffff; }
+.red    .card-inner { --neon: #ff003c; }
+.purple .card-inner { --neon: #b300ff; }
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 600px) {
+    .title {
+        font-size: 2.1rem;
+    }
+
+    .card-inner {
+        height: 340px;
+    }
+}
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
